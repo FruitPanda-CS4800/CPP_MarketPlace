@@ -5,5 +5,5 @@ from django.http import HttpResponse
 def home(request):
     return HttpResponse('Home')
 
-def exampleapi(request):
+def helloWorld(request):
     return HttpResponse('Hello World')
