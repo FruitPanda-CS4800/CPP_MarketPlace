@@ -7,3 +7,6 @@ def home(request):
 
 def helloWorld(request):
     return HttpResponse('Hello World')
+
+def helloWorld(request):
+    return HttpResponse('Test')
