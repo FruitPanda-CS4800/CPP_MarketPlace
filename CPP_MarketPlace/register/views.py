@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import RegisterForm
+from PIL import Image
+import os
 
 # Create your views here.
 def register(response):
@@ -12,4 +14,9 @@ def register(response):
     else:
         form = RegisterForm() #create blank form if not getting post request
     form = RegisterForm()
+    currpath = os.getcwd()
+    imagepath = "/register/images/happy.png"
+    path = currpath+imagepath
+    pic = Image.open(path)
+    pic.show()
     return render(response, "register/register.html", {"form":form})
