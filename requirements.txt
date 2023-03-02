@@ -2,3 +2,6 @@ asgiref==3.6.0
 Django==4.1.7
 sqlparse==0.4.3
 django-import-export==3.1.0
+djangorestframework
+django-crispy-forms
+crispy-bootstrap4

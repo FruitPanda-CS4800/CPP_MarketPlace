@@ -7,11 +7,13 @@
     <title>Document</title>
   </head>
   <body>
-    <form action="{% url 'search' %}" method="get">
-      <input name="query" type="text" placeholder="Search...">
-    </form>
     <header>
-        <h1>Home</h1>
+        <h1>All Products</h1>
     </header>
+    {% block content %}
+    {% for x in my_data %}
+        {{x.name }}
+    {% endfor %}
+    {% endblock content %}
   </body>
 </html>

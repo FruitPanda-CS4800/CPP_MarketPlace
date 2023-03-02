@@ -28,3 +28,15 @@ def addItem(request):
         serializer.save()
     return Response()
 
+def products(request):
+    products = Product.objects.all()
+    context={
+      'my_data':products
+    }
+    return render(request, 'products.html', context)
+
+def search(request):
+    productName = request.GET.get('query')
+    #Return any product with name that contains query
+    results = Product.objects.filter(name__icontains=productName)
+    return render(request, 'search_results.html', {'results': results})
