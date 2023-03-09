@@ -10,7 +10,7 @@ def register(response):
         if form.is_valid():
             form.save()
 
-        return redirect("/home")
+        return redirect("/")
     else:
         form = RegisterForm() #create blank form if not getting post request
     form = RegisterForm()
