@@ -77,6 +77,7 @@ TEMPLATES = [
         },
         'DIRS': [os.path.join(BASE_DIR, 'templates'),
                  os.path.join(BASE_DIR, 'CPPMarketPlace', 'templates', 'CPPMarketPlace'),
+                 os.path.join(BASE_DIR, 'theme/templates'),
                 ]
     },
 ]

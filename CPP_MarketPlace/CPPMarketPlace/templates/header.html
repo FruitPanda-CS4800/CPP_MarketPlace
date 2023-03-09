@@ -1,0 +1,45 @@
+{% load static tailwind_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% tailwind_css %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+  </head>
+  <header>
+    <nav class="class=flex items-center justify-center w-screen bg-green-800 flow-root">
+      <div class="flex items-center grow flow-root">
+        <div class = "float-left flex items-center w-600">
+          <div class="ml-4 mr-10 ">
+            <a href="/" id="logo-link"><img src="{% static "images/Cal_Poly_Pomona_Broncos_logo.png" %}" class="object-contain h-20 w-20" alt="home" /></a>
+          </div>
+          <div class="ml-4 mr-10 flex items-center">
+            <form action="{% url 'search' %}" method="get" class="flex items-center">
+              <div class="flex items-center">
+                <input type="text" name="query" placeholder="Search" class="border border-gray-300  rounded-l-lg h-8 w-80 mr-(-2)">
+                <button type="submit" class="bg-yellow-400 text-white rounded-r-lg h-8 w-8 flex items-center justify-center"> 
+                  <img class="h-4 w-4" src="{% static "images/search.png" %}" alt="Search"/>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+        <div class = "float-right flex items-center ">
+          <div class="ml-4 mr-10 ">
+            <a href="#" id="logo-link">
+            <img src="{% static "images/account.png" %}" class="object-contain h-12 w-15" alt="home" /></a>
+          </div>
+          <div class="ml-4 mr-10">
+            <a href="#" id="logo-link">
+            <img src="{% static "images/cart.png" %}" class="object-contain h-20 w-8" alt="home" /></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+</html>

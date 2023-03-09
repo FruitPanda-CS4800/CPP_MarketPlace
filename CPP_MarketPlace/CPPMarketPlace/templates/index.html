@@ -1,4 +1,5 @@
 {% load static tailwind_tags %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,26 +7,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Home</title>
   </head>
   <header>
-    <nav class="class=flex items-center justify-center w-screen bg-green-500 hover:bg-blue-600">
-      <div class="flex items-center flex-grow">
-        <a href="#" id="logo-link"><img src="your-logo.png" alt="Your Logo"></a>
-        <form action="{% url 'search' %}" method="get">
-          <input type="text" name="query" placeholder="Search..." class="border border-gray-300 py-2 px-4 rounded-lg">
-          <button type="submit" class="ml-2 bg-red-300 hover:bg-blue-600 text-white py-2 px-4 rounded-lg">Search</button>
-        </form>
-      
-        <a href="#" title="Account"><i class="fas fa-user"></i></a>
-        <p>Account</p>
-        <a href="#" title="Shopping Cart"><i class="fas fa-shopping-cart"></i></a>
-        <p>Cart</p>
-      </div>
-    </nav>
+    {% include 'header.html' %}  
+    <h1>Home </h1>
   </header>
 
-  <body>
-  
-  </body>
 </html>
