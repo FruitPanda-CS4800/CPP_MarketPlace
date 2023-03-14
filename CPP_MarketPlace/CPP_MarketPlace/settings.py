@@ -44,6 +44,11 @@ INSTALLED_APPS = [
     'CPPMarketPlace',
     'rest_framework',
     'bootstrap4',
+    'import_export',
+    'tailwind',
+    'theme',
+    'django_browser_reload',
+
 ]
 
 MIDDLEWARE = [
@@ -54,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = 'CPP_MarketPlace.urls'
@@ -73,6 +79,7 @@ TEMPLATES = [
         },
         'DIRS': [os.path.join(BASE_DIR, 'templates'),
                  os.path.join(BASE_DIR, 'CPPMarketPlace', 'templates', 'CPPMarketPlace'),
+                 os.path.join(BASE_DIR, 'theme/templates'),
                 ]
     },
 ]
@@ -129,8 +136,15 @@ STATIC_URL = 'static/'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS=("bootstrap4", "uni_form")
 CRISPY_TEMPLATE_PACK="bootstrap4"
+TAILWIND_APP_NAME = 'theme'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"

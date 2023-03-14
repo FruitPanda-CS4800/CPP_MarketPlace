@@ -22,4 +22,5 @@ urlpatterns = [
     path("register/", v.register, name="register"),
     path("login/", v.loginPage, name="login"),
     path('', include('CPPMarketPlace.urls')),
+    path("__reload__/", include("django_browser_reload.urls")),
 ]
