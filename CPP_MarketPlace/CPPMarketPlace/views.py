@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from CPPMarketPlace.models import Product
 from CPPMarketPlace.serializers import ProductSerializer
+from .forms import ProductForm
 #from serializers import ProductSerializer
 # Create your views here.
 
@@ -40,3 +41,12 @@ def search(request):
     #Return any product with name that contains query
     results = Product.objects.filter(name__icontains=productName)
     return render(request, 'search_results.html', {'results': results})
+
+def create_product(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save()
+    else:
+        form = ProductForm()
+    return render(request, 'create_product.html', {'form': form})
