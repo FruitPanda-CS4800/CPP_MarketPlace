@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from .forms import RegisterForm
-from PIL import Image
-import os
+from django.contrib import messages
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import AuthenticationForm
 
 # Create your views here.
 def register(response):
@@ -9,14 +10,36 @@ def register(response):
         form = RegisterForm(response.POST)
         if form.is_valid():
             form.save()
+            user = form.cleaned_data.get('username')
+            messages.success(response, 'Account was created for ' + user)
+            return redirect('login')
+        else:
+       # this should be include if form validate failed
+          return render(response, 'register/register.html', {'form': form})
 
-        return redirect("/home")
     else:
         form = RegisterForm() #create blank form if not getting post request
-    form = RegisterForm()
-    currpath = os.getcwd()
-    imagepath = "/register/images/happy.png"
-    path = currpath+imagepath
-    pic = Image.open(path)
-    pic.show()
-    return render(response, "register/register.html", {"form":form})
+    #form = RegisterForm()
+        return render(response, 'register/register.html', {'form':form})
+
+#def loginPage(response):
+    #context= {}
+    #return render(response, 'login/login.html', context)
+
+def loginPage(request):
+	if request.method == "POST":
+		form = AuthenticationForm(request, data=request.POST)
+		if form.is_valid():
+			username = form.cleaned_data.get('username')
+			password = form.cleaned_data.get('password')
+			user = authenticate(username=username, password=password)
+			if user is not None:
+				login(request, user)
+				messages.info(request, f"You are now logged in as {username}.")
+				return redirect("home")
+			else:
+				messages.error(request,"Invalid username or password.")
+		else:
+			messages.error(request,"Invalid username or password.")
+	form = AuthenticationForm()
+	return render(request=request, template_name="login/login.html", context={"login_form":form})

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'register.apps.RegisterConfig',
     'CPPMarketPlace',
     'rest_framework',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
