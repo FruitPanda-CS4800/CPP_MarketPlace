@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -50,3 +50,8 @@ def create_product(request):
     else:
         form = ProductForm()
     return render(request, 'create_product.html', {'form': form})
+
+def product_detail(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    context = {'product': product}
+    return render(request, 'product_page.html', context)
