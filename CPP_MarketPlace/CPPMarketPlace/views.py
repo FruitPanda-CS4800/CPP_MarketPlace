@@ -40,7 +40,7 @@ def search(request):
     productName = request.GET.get('query')
     #Return any product with name that contains query
     results = Product.objects.filter(name__icontains=productName)
-    return render(request, 'search_results.html', {'results': results})
+    return render(request, 'search_results.html', {'results': results , 'query':productName})
 
 def create_product(request):
     if request.method == 'POST':
