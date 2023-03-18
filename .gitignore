@@ -1,3 +1,5 @@
+**/__pycache__
+*.pyc
 CPP_MarketPlace/CPPMarketPlace/__pycache__/__init__.cpython-310.pyc
 CPP_MarketPlace/CPPMarketPlace/__pycache__/admin.cpython-310.pyc
 CPP_MarketPlace/CPP_MarketPlace/__pycache__/wsgi.cpython-310.pyc
@@ -31,3 +33,4 @@ CPP_MarketPlace\CPPMarketPlace\migrations\__pycache__
 CPP_MarketPlace\theme\__pycache__
 CPP_MarketPlace\CPPMarketPlace\migrations
 CPP_MarketPlace\media\product_images
+
