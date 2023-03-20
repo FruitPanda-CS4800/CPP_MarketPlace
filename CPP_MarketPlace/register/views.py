@@ -22,7 +22,8 @@ def register(response):
                 return render(response, 'register/register.html', {'form': form})
 
         #else:
-           # return render(response, 'register/register.html', {'form':form})
+    form = RegisterForm(response.POST)
+    return render(response, 'register/register.html', {'form':form})
 
 #def loginPage(response):
     #context= {}
