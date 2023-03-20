@@ -1,32 +1,35 @@
-<!DOCTYPE html>
 {% load static %}
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>All Products</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
   </head>
-  <header>
-    {% include 'header.html' %}  
-    <div class="max-w-6xl my-6 mx-8">
-      <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold">All Products</h1>
-    </div>
-  </header>
   <body>
+    <header>
+      {% include 'header.html' %}
+      <div class="max-w-6xl my-6 mx-8">
+        <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold">All Products</h1>
+      </div>
+    </header>
     <div class="max-w-6xl mx-auto px-4">
-      <div class="grid grid-cols-4 gap-4">
+      <div class="grid-container">
         {% for product in my_data %}
-        <a href="{% url 'product_detail' product.id %}">
-          <div class="p-4 mx-auto" style="width: calc(100% / 4 - 1rem); min-width: 300px;">
+          <div class="grid-item">
             {% if product.image %}
-            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="mx-auto my-4" style="max-height: 200px; height: 200px;">
+            <a href="{% url 'product_detail' product.id %}">
+              <img src="{{ product.image.url }}" alt="{{ product.name }}" class="mx-auto my-4">
+            </a>
             {% else %}
             <p>No image available</p>
             {% endif %}
-            <p class="text-center">{{ product.name }}</p>
+            <a href="{% url 'product_detail' product.id %}">
+              <p class="text-center max-w-xs">{{ product.name }}</p>
+            </a>
           </div>
-        </a>
         {% endfor %}
       </div>
     </div>

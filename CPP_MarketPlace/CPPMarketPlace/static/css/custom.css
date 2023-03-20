@@ -1,0 +1,30 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-gap: 2rem;
+  }
+  .grid-item:hover img,
+  .grid-item:hover p {
+    transform: scale(1.06);
+  }
+  .grid-item {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    transition: box-shadow 0.3s ease-in-out;
+    box-shadow: 0 0 0 transparent;
+  }
+
+  
+
+  .grid-item img {
+    max-height: 200px;
+    height: 200px;
+    border-radius: 0.5rem;
+  }
+
+
+  .grid-item p {
+    text-align: center;
+    margin-top: 0.5rem;
+  }
