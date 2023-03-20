@@ -1,12 +1,22 @@
-{% block content %}
 {% load crispy_forms_tags %}
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% block content %}
 
 
 <div class="container py-5">
     <h1>Login</h1>
     <form method="POST">
       {% csrf_token %}
-      {{ login_form|crispy }}
+      <div class="container shadow p-4">
+        <div class="row">
+          {{ login_form.username|as_crispy_field }}
+        </div>
+        <div class="row">
+          {{ login_form.password|as_crispy_field }}
+        </div>
+      </div>
       <button class="btn btn-primary" type="submit">Login</button>
     </form>
     <p class="text-center">Don't have an account? <a href="{% url 'register' %}">Create an account</a>.</p>

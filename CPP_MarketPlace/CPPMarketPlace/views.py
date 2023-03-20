@@ -4,6 +4,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from CPPMarketPlace.models import Product
 from CPPMarketPlace.serializers import ProductSerializer
+from django.contrib.auth.decorators import login_required
+
 #from serializers import ProductSerializer
 # Create your views here.
 

@@ -30,12 +30,20 @@
         
         <div class = "float-right flex items-center ">
           <div class="ml-4 mr-10 ">
+            <span>{{request.user}}</span>
+          </div>
+          <div class="ml-4 mr-10 ">
             <a href="#" id="logo-link">
             <img src="{% static "images/account.png" %}" class="object-contain h-12 w-15" alt="home" /></a>
           </div>
           <div class="ml-4 mr-10">
             <a href="#" id="logo-link">
             <img src="{% static "images/cart.png" %}" class="object-contain h-20 w-8" alt="home" /></a>
+          </div>
+          <div class="ml-4 mr-10">
+            <span>
+              <a href="{% url 'logout' %}"> Logout </a>
+            </span>
           </div>
         </div>
       </div>
