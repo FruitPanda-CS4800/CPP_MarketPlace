@@ -43,12 +43,14 @@ INSTALLED_APPS = [
     'register.apps.RegisterConfig',
     'CPPMarketPlace',
     'rest_framework',
+    'jquery',
     'bootstrap4',
     'import_export',
     'tailwind',
     'theme',
     'django_browser_reload',
-
+    'Messaging',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -79,12 +81,13 @@ TEMPLATES = [
         },
         'DIRS': [os.path.join(BASE_DIR, 'templates'),
                  os.path.join(BASE_DIR, 'CPPMarketPlace', 'templates', 'CPPMarketPlace'),
+                 os.path.join(BASE_DIR, 'Messaging', 'templates'),
                  os.path.join(BASE_DIR, 'theme/templates'),
                 ]
     },
 ]
 
-WSGI_APPLICATION = 'CPP_MarketPlace.wsgi.application'
+ASGI_APPLICATION = 'CPP_MarketPlace.asgi.application'
 
 
 # Database
@@ -133,10 +136,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS=("bootstrap4", "uni_form")
 CRISPY_TEMPLATE_PACK="bootstrap4"
 TAILWIND_APP_NAME = 'theme'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+        # 'CONFIG': {
+        #     'hosts': [('127.0.0.1', 6379)],
+        # }
+    }
+}
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
