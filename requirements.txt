@@ -6,3 +6,6 @@ djangorestframework
 django-crispy-forms
 crispy-bootstrap4
 django-tailwind
+django-jquery
+channels
+daphne

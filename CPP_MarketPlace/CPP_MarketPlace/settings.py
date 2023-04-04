@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    #'daphne',
     'django.contrib.staticfiles',
     "crispy_forms",
     "crispy_bootstrap4",
@@ -87,8 +88,9 @@ TEMPLATES = [
     },
 ]
 
-ASGI_APPLICATION = 'CPP_MarketPlace.asgi.application'
-
+ASGI_APPLICATION = "CPP_MarketPlace.asgi.application"
+WSGI_APPLICATION = "CPP_MarketPlace.wsgi.application"
+ASGI_THREADS = 500
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -165,3 +167,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+DJANGO_SETTINGS_MODULE='CPP_MarketPlace.settings'

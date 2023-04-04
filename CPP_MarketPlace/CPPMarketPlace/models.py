@@ -12,11 +12,12 @@ def product_image_path(instance, filename):
 # Create your models here.
 class Product(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=200, null=True)
-    description = models.TextField(blank=True, null=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2, null=TRUE)
-    category = models.CharField(max_length=100, blank=True, null=True, default='')
-    image = models.ImageField(blank=True, null=True, default='', upload_to=product_image_path)
+    name = models.CharField(max_length=200)
+    description = models.TextField(blank=True, null=True, max_length=2000)
+    condition = models.CharField(max_length=50)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    category = models.CharField(max_length=100)
+    image = models.ImageField(blank=True, null=True, upload_to=product_image_path)
     created = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
     
