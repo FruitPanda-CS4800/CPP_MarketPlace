@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'import_export',
     'tailwind',
     'theme',
-    'django_browser_reload',
+    #'django_browser_reload',
     'Messaging',
     'channels',
 ]
@@ -61,7 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "django_browser_reload.middleware.BrowserReloadMiddleware",
+    #"django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = 'CPP_MarketPlace.urls'

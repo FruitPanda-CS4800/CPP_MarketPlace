@@ -34,13 +34,19 @@
 					</div>
 					<div class="card-body contacts_body">
 						<ui class="contacts">
-						<li class="active">
+							{% for thread in Threads %}
+							<li class="{% if forloop.first %}active{% endif %} contact-li" chat-id="chat_{{ thread.id }}" style="cursor: pointer">
 							<div class="d-flex bd-highlight">
 								<div class="img_cont">
 									<img src="" class="rounded-circle user_img">
 									<span class="online_icon"></span>
 								</div>
 								<div class="user_info">
+									{% if thread.first_person == user %}
+                                        <span>{{ thread.second_person.username }}</span>
+                                    {% else %}
+                                        <span>{{ thread.first_person.username }}</span>
+                                    {% endif %}
 									<span>post title</span>
 								</div>
 							</div>
