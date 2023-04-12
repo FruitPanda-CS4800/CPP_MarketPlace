@@ -1,0 +1,40 @@
+name: Django CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: amazonlinux-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install Dependencies
+      run: |
+        python3 -m pip install --upgrade pip
+        pip3 install -r requirements.txt
+    - name: Update code
+      uses: appleboy/ssh-action@v0.1.9
+      with:
+        host: ec2-18-119-160-45.us-east-2.compute.amazonaws.com/
+        username: ec2-user
+        key: ${{ secrets.KEY }}
+        port: 22
+        script: |
+          git pull origin master
+    - name: Run commands to start the Django server
+      uses: appleboy/ssh-action@v0.1.9
+      with:
+        host: ec2-18-119-160-45.us-east-2.compute.amazonaws.com/
+        username: ec2-user
+        key: ${{ secrets.KEY }}
+        port: 22
+        script: |
+          killall python
+    - name: Run Tests
+      run: |
+        python3 manage.py test
