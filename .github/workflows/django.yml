@@ -26,7 +26,8 @@ jobs:
         port: 22
         script: |
           cd /home/ec2-user/proj/CPP_MarketPlace
-          git pull origin main
+          git checkout main
+          git pull
     - name: Run commands to start the Django server
       uses: appleboy/ssh-action@v0.1.9
       with:
@@ -36,7 +37,13 @@ jobs:
         port: 22
         script: |
           killall python
-          cd /home/ec2-user/proj/CPP_MarketPlace
+          killall python3
+          cd /home/ec2-user/proj/CPP_MarketPlace/CPP_MarketPlace
+          git checkout main
+          python3 manage.py tailwind build
+          python3 manage.py makemigrations
+          python3 manage.py migrate
+          nohup python3 manage.py runserver 0.0.0.0:8000 &
 
     - name: Run Tests
       run: |

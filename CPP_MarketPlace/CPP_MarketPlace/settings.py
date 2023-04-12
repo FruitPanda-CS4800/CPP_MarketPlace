@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'theme',
     'django_browser_reload',
     'Messaging',
-    'channels',
+    #'channels',
 ]
 
 MIDDLEWARE = [
@@ -87,7 +87,7 @@ TEMPLATES = [
     },
 ]
 
-ASGI_APPLICATION = 'CPP_MarketPlace.asgi.application'
+#ASGI_APPLICATION = 'CPP_MarketPlace.asgi.application'
 
 
 # Database

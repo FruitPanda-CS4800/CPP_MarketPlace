@@ -49,6 +49,11 @@ def create_product(request):
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save()
+            print("Added")
+            return render(request, 'create_product.html', {'form': form, 'success': True})
+        else:
+            print("Did not add")
+            return render(request, 'create_product.html', {'form': form, 'error_message': 'Product was not added.'})    
     else:
         form = ProductForm()
     return render(request, 'create_product.html', {'form': form})
