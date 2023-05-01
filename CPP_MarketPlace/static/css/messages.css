@@ -2,7 +2,9 @@ body,
 html {
   height: 100%;
   margin: 0;
-  background: #ffffff;
+  background: #7f7fd5;
+  background: -webkit-linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
+  background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
 }
 
 .chat {
@@ -137,12 +139,22 @@ html {
   font-size: 10px;
   color: rgba(255, 255, 255, 0.6);
 }
+.video_cam {
+  margin-left: 50px;
+  margin-top: 5px;
+}
+.video_cam span {
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 20px;
+}
 .msg_cotainer {
   margin-top: auto;
   margin-bottom: auto;
   margin-left: 10px;
   border-radius: 25px;
-  background-color: #b3cccc;
+  background-color: #82ccdd;
   padding: 10px;
   position: relative;
   min-width: 70px;
@@ -155,7 +167,7 @@ html {
   margin-bottom: auto;
   margin-right: 10px;
   border-radius: 25px;
-  background-color: #e0ebeb;
+  background-color: #78e08f;
   padding: 10px;
   position: relative;
 }

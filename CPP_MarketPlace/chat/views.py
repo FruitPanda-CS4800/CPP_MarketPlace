@@ -1,8 +1,9 @@
-from django.shortcuts import render
-from Messaging.models import Thread
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
 
 # Create your views here.
+from chat.models import Thread
+
 
 @login_required
 def messages_page(request):
@@ -10,4 +11,4 @@ def messages_page(request):
     context = {
         'Threads': threads
     }
-    return render(request, 'messaging.html')
+    return render(request, 'messages.html', context)
