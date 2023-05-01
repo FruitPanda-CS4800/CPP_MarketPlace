@@ -2,7 +2,11 @@ asgiref==3.6.0
 Django==4.1.7
 sqlparse==0.4.3
 django-import-export==3.1.0
-djangorestframework
-django-crispy-forms
+djangorestframework==3.14.0
+django-crispy-forms==2.0
 crispy-bootstrap4
-django-tailwind
+django-tailwind==3.5.0
+django-jquery==3.1.0
+daphne==3.0.2
+Pillow==9.3.0
+channels==3.0.5

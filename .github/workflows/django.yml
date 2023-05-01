@@ -1,0 +1,58 @@
+name: Django CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install Dependencies
+      run: |
+        python3 -m pip install --upgrade pip
+        pip3 install -r requirements.txt
+    - name: Update code
+      uses: appleboy/ssh-action@v0.1.9
+      with:
+        host: ec2-18-119-160-45.us-east-2.compute.amazonaws.com
+        username: ec2-user
+        key: ${{ secrets.KEY }}
+        port: 22
+        script: |
+          cd /home/ec2-user/proj/CPP_MarketPlace
+          git checkout main
+          git pull
+          
+    - name: Run Tests
+      uses: appleboy/ssh-action@v0.1.9
+      with:
+        host: ec2-18-119-160-45.us-east-2.compute.amazonaws.com
+        username: ec2-user
+        key: ${{ secrets.KEY }}
+        port: 22
+        script: |
+          cd /home/ec2-user/proj/CPP_MarketPlace/CPP_MarketPlace
+          python3 manage.py test
+
+    - name: Run commands to start the Django server
+      uses: appleboy/ssh-action@v0.1.9
+      with:
+        host: ec2-18-119-160-45.us-east-2.compute.amazonaws.com
+        username: ec2-user
+        key: ${{ secrets.KEY }}
+        port: 22
+        script: |
+          killall python
+          killall python3
+          cd /home/ec2-user/proj/CPP_MarketPlace/CPP_MarketPlace
+          git checkout main
+          python3 manage.py tailwind build
+          python3 manage.py makemigrations
+          python3 manage.py migrate
+          nohup python3 manage.py runserver 0.0.0.0:8000 > /dev/null 2>&1 &
