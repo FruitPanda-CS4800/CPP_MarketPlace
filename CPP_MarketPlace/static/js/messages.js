@@ -64,18 +64,12 @@ function newMessage(message, sent_by_id, thread_id) {
 					${message}
 					<span class="msg_time_send">8:55 AM, Today</span>
 				</div>
-				<div class="img_cont_msg">
-					<img src="" class="rounded-circle user_img_msg">
-				</div>
 			</div>
 	    `
     }
 	else{
 	    message_element = `
            <div class="d-flex mb-4 received">
-              <div class="img_cont_msg">
-                 <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg">
-              </div>
               <div class="msg_cotainer">
                  ${message}
               <span class="msg_time">8:40 AM, Today</span>
@@ -107,16 +101,12 @@ $('.contact-li').on('click', function (){
 
 function get_active_other_user_id(){
     let other_user_id = $('.messages-wrapper.is_active').attr('other-user-id')
-    console.log("other user: " + other_user_id)
     other_user_id = $.trim(other_user_id)
-    console.log("other user but trimmed: " + other_user_id)
     return other_user_id
 }
 
 function get_active_thread_id(){
-    var thread_id;
     let chat_id = $('.messages-wrapper.is_active').attr('chat-id')
-    if (chat_id!=undefined)
-        thread_id = chat_id.replace('chat_', '')
+    let thread_id = chat_id.replace('chat_', '')
     return thread_id
 }

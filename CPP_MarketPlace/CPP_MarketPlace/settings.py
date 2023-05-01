@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',
     #'django_browser_reload',
-    'Messaging',
+    #'Messaging',
     'chat',
     'channels',
 ]
