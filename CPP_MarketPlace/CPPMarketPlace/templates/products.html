@@ -27,7 +27,7 @@
             <p>No image available</p>
             {% endif %}
             <a href="{% url 'product_detail' product.id %}">
-              <p class="text-center max-w-xs">{{ product.name }}</p>
+              <p class="text-center max-w-xs">${{ product.price }}</p>
             </a>
           </div>
         {% endfor %}
