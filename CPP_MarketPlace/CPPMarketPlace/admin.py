@@ -8,3 +8,8 @@ from . import models
 class Products(ImportExportModelAdmin, admin.ModelAdmin):
     ...
 admin.site.register(models.Product, Products)
+
+class UserProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'profile_picture')  # list of fields to display in the admin interface
+# Register UserProfile with the admin site
+admin.site.register(models.UserProfile, UserProfileAdmin)

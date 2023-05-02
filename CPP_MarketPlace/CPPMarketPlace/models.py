@@ -5,11 +5,15 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.utils import timezone
 from PIL import Image
 import tempfile
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 def product_image_path(instance, filename):
     """Return the upload path for product images."""
     return os.path.join('product_images', str(instance.id), filename)
-# Create your models here.
+
+# Database table for products
 class Product(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200)
@@ -20,7 +24,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to=product_image_path)
     created = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
-    
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     @classmethod
     #python manage.py shell -c "from CPPMarketPlace.models import Product; Product.create_products(4)"
     #Create test products
@@ -39,3 +43,15 @@ class Product(models.Model):
             product = cls(name=product_name, category='Test Category',price=5, image=file)
             product.save()
             print(product.id)   
+
+#Database table for User accounts
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_picture = models.ImageField(upload_to='profile_pictures', default='default/account.png', blank=True, null=True)
+    about = models.TextField(max_length=2000, default="This user has not set their description.")
+    date_joined = models.DateTimeField(null=True, blank=True)
+    items_sold = models.IntegerField(default=0)
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        UserProfile.objects.create(user=instance, date_joined=instance.date_joined)
