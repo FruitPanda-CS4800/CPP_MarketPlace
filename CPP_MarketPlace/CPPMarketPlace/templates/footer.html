@@ -1,0 +1,40 @@
+{% load static tailwind_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% tailwind_css %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <footer>
+    <style>
+        footer {
+          text-align: center;
+          padding: 2px;
+          color: white;
+          position: absolute;
+          right: 0;bottom:0;left:0;
+          background-color: black;
+        }
+
+        #container
+        {
+            padding: 20px;
+            height: 100px;
+            right: 0;bottom:0;left:0;
+        }
+        </style>
+    <nav class="class=flex items-center justify-center w-screen bg-green-800 flow-root">
+      <div class="flex items-center grow flow-root" id="container">
+        <div class = "float-left flex items-center w-600">
+            <div class="ml-4 mr-10 ">
+                © Cal Poly Pomona 2023
+            </div>
+        </div>
+      </div>
+    </nav>
+</footer>
+
+</html>
