@@ -70,3 +70,15 @@ def product_detail(request, product_id):
     user_profile = UserProfile.objects.get(user=product.owner)
     context = {'product': product, 'user_profile': user_profile}
     return render(request, 'product_page.html', context)
+
+
+def account_settings(request):
+    user_profile = UserProfile.objects.get(user=request.user)
+    if request.method == 'POST':
+        user_profile.first_name = request.POST['first_name']
+        user_profile.last_name = request.POST['last_name']
+        user_profile.about = request.POST['about']
+        if 'profile_picture' in request.FILES:
+            user_profile.profile_picture = request.FILES['profile_picture']
+        user_profile.save()
+    return render(request, 'account_settings.html', {'user_profile': user_profile})
