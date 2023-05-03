@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from register import views as v
+from chat import views as view
 #this is main
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +25,6 @@ urlpatterns = [
     path("logout/", v.logoutUser, name="logout"),
     #path('messages/', include('Messaging.urls')),
     path('', include('CPPMarketPlace.urls')),
-    path('chat/', include('chat.urls')),
+    path('chat/', view.messages_page, name="chat"),
     #path("__reload__/", include("django_browser_reload.urls")),
 ]

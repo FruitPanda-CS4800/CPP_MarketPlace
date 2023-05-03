@@ -47,9 +47,12 @@
               </div>
             </div>
           </div>
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold mt-4 rounded mx-8 px-4">
+          <a href="{% url 'test' %}"></a>
+          <input type="hidden" id="username" value="{{ user_profile.user.id  }}">
+          <button name='hi' class="bg-blue-500 hover:bg-blue-700 text-white font-bold mt-4 rounded mx-8 px-4" onclick="setGetParameter()">
             Contact Seller
           </button>
+        </a>
         </div>
         
       </div>
@@ -62,4 +65,30 @@
         <p class="text-gray-700 text-xl my-4">{{ product.description }}</p>
       </div>
     </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+
+      function setGetParameter(){
+          var name = $('#username').val();
+          console.log("name " + name)
+          $.ajax({
+            type: "POST",
+            url: "{% url 'test' %}",
+            data: {
+              'name': name,
+              'csrfmiddlewaretoken': '{{ csrf_token }}'},
+            success: function(result){
+              alert("Success");
+              console.log("um it worked??")
+              return false;
+            },
+            error: function(result){
+              alert("nope");
+              console.log(result)
+              return false;
+            }
+          });
+      }
+      </script>
   </body>

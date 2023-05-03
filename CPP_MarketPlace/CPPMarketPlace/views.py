@@ -7,6 +7,9 @@ from CPPMarketPlace.serializers import ProductSerializer
 from django.contrib.auth.decorators import login_required
 from .forms import ProductForm
 from register import views as register
+from chat.forms import ChatForm
+from chat.models import Thread
+from chat import views as chat
 #from serializers import ProductSerializer
 # Create your views here.
 
@@ -86,3 +89,19 @@ def account_settings(request):
             user_profile.profile_picture = request.FILES['profile_picture']
         user_profile.save()
     return render(request, 'account_settings.html', {'user_profile': user_profile})
+
+def chat_page(request):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            otheruserid = request.POST.get("name")
+            print(otheruserid)
+            currentuser = request.user #UserProfile.objects.get(id=request.user)
+            otheruser = UserProfile.objects.get(id=otheruserid)
+            c = Thread(first_person=currentuser, second_person=otheruser.user)
+            c.save()
+            return render(request, 'chat/templates/messages.html')
+        else:
+            return chat.messages_page(request)
+    else:
+        return register.loginPage(request)
+    
