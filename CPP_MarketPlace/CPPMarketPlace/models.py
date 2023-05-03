@@ -47,11 +47,14 @@ class Product(models.Model):
 #Database table for User accounts
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=30,default='default')
+    last_name = models.CharField(max_length=30,default='default')
     profile_picture = models.ImageField(upload_to='profile_pictures', default='default/account.png', blank=True, null=True)
     about = models.TextField(max_length=2000, default="This user has not set their description.")
     date_joined = models.DateTimeField(null=True, blank=True)
     items_sold = models.IntegerField(default=0)
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        UserProfile.objects.create(user=instance, date_joined=instance.date_joined)
+        UserProfile.objects.create(user=instance, first_name=instance.first_name, last_name=instance.last_name, date_joined=instance.date_joined)

@@ -10,7 +10,7 @@ class RegisterForm(UserCreationForm): #inherits from usercreationform
 
     class Meta:
         model = User #change user model when you save something in this form
-        fields = ["username", "email", "password1", "password2"]
+        fields = ["first_name","last_name","username", "email", "password1", "password2"]
 
     def __init__(self, *args, **kwargs):
         super(RegisterForm, self).__init__(*args, **kwargs)

@@ -1,0 +1,30 @@
+{% include 'header.html' %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-2xl font-bold mb-4">Account Settings</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-4">
+      <label for="id_first_name" class="block font-semibold">First Name:</label>
+      <input type="text" name="first_name" value="{{ user_profile.first_name }}" class="form-input mt-1 block w-full">
+    </div>
+    <div class="mb-4">
+      <label for="id_last_name" class="block font-semibold">Last Name:</label>
+      <input type="text" name="last_name" value="{{ user_profile.last_name }}" class="form-input mt-1 block w-full">
+    </div>
+    <div class="mb-4">
+      <label for="id_about" class="block font-semibold">About:</label>
+      <textarea name="about" class="form-textarea mt-1 block w-full">{{ user_profile.about }}</textarea>
+    </div>
+    <div class="mb-4">
+      <label for="id_profile_picture" class="block font-semibold mb-2">Profile Picture:</label>
+        {% if user_profile.profile_picture %}
+        <img src="{{ user_profile.profile_picture.url }}" alt="Profile Picture" class="w-24 h-24 rounded-full mb-4">
+        {% endif %}
+      <input type="file" name="profile_picture" class="form-input mt-1 block w-full">
+    </div>
+    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Save Changes</button>
+  </form>
+</div>
+{% endblock %}
