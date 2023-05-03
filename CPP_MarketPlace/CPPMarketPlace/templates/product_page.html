@@ -78,16 +78,6 @@
             data: {
               'name': name,
               'csrfmiddlewaretoken': '{{ csrf_token }}'},
-            success: function(result){
-              alert("Success");
-              console.log("um it worked??")
-              return false;
-            },
-            error: function(result){
-              alert("nope");
-              console.log(result)
-              return false;
-            }
           });
       }
       </script>

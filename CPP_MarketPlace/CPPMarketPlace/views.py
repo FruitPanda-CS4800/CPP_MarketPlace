@@ -94,8 +94,7 @@ def chat_page(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
             otheruserid = request.POST.get("name")
-            print(otheruserid)
-            currentuser = request.user #UserProfile.objects.get(id=request.user)
+            currentuser = request.user
             otheruser = UserProfile.objects.get(id=otheruserid)
             c = Thread(first_person=currentuser, second_person=otheruser.user)
             c.save()
