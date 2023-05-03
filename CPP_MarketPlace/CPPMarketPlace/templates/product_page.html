@@ -32,11 +32,15 @@
           <hr class="my-6 border-gray-400">
           <h2 class="text-gray-700 text-xl font-bold mr-4 px-10 mb-4">Seller</h2>
           <div class="flex flex-row items-center px-10">
-            <div class="w-1/5 flex justify-end" style="max-width: 70px;">
-              <img class="w-full rounded-full" src="{{ user_profile.profile_picture.url }}" alt="Profile Picture">
-            </div>
+              <div class="w-1/5 flex justify-end" style="max-width: 70px;">
+                <a href="/account/{{user_profile.user.id}}">
+                  <img class="w-full rounded-full" src="{{ user_profile.profile_picture.url }}" alt="Profile Picture">
+                </a>
+              </div>
             <div class="w-4/5 ml-4">
-              <div class="font-bold text-lg">{{ user_profile.user.username }}</div>
+              <a href="/account/{{user_profile.user.id}}">
+                <div class="font-bold text-lg">{{ user_profile.user.username }}</div>
+              </a>
               <div class="flex items-center">
                 <span class="text-yellow-400 mr-1">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
                 <span class="text-gray-500">(4)</span>
