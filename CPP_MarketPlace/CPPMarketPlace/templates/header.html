@@ -30,7 +30,9 @@
         
         <div class = "float-right flex items-center ">
           <div class="ml-4 mr-10 ">
-            <span>{{request.user}}</span>
+            <a href="/account/{{ request.user.id}}" id="logo-link">
+              <span>{{request.user}}</span>
+            </a>
           </div>
           <div class="ml-4 mr-10 ">
             <a href="/account_settings" id="logo-link">
