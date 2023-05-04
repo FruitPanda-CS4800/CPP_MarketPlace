@@ -1,29 +1,92 @@
+<!DOCTYPE html>
 {% load crispy_forms_tags %}
 {% load bootstrap4 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 {% block content %}
+{% load static %}
 
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login Page</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+<style class="cp-pen-styles">html, body {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+ }
+ body {
+ /* background-image: url( "CPP_MarketPlace/register/images/back.png"); */
+ background: #c5d8bb;
+ font-family: "Roboto", sans-serif;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ /* font-size: 16px; */
+}
+form header {
+  background: #023e22;
+  padding: 30px 20px;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  border-radius: 10px 10px 0 0;
+}
+form {
+  background: white;
+  border: 90p;
+  border-radius: 30px 30px 0 0;
+}
+form button {
+  position: relative;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  left: 50%;
+  color: white;
+  background: #023e22;
+  outline: none;
+  border: none;
+  padding: 5px 15px;
+  font-size: 1.3em;
+  font-weight: 400;
+  border-radius: 3px;
+  box-shadow: 0px 0px 10px rgba(51, 51, 51, 0.4);
+
+}
+
+</style>
+</head> 
+
+<body>
 <div class="container py-5">
-    <h1>Login</h1>
-    <form method="POST">
-      {% csrf_token %}
-      <div class="container shadow p-4">
-        <div class="row">
-          {{ login_form.username|as_crispy_field }}
-        </div>
-        <div class="row">
-          {{ login_form.password|as_crispy_field }}
-        </div>
-      </div>
-      <button class="btn btn-primary" type="submit">Login</button>
-    </form>
-    <p class="text-center">Don't have an account? <a href="{% url 'register' %}">Create an account</a>.</p>
-  </div>
+   
+   <form method="POST">
+     {% csrf_token %}
+     <header>Login</header>
+     <div class="container shadow p-4">
+       <div class="row">
+         {{ login_form.username|as_crispy_field }}
+       </div>
+       <div class="row">
+         {{ login_form.password|as_crispy_field }}
+       </div>
+     </div>
+     <button type="submit">Login</button>
+   </form>
+   <p class="text-center">Don't have an account? <a href="{% url 'register' %}">Create an account</a>.</p>
+ </div>
+</body>
+
 
 {% for message in messages %}
 <p id="messages">{{message}}</p>
 {% endfor %}
 
+
 {% endblock %}
+
+</html>
+
