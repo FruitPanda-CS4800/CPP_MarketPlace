@@ -14,7 +14,17 @@ from chat import views as chat
 # Create your views here.
 
 def home(request):
-    return render(request, "index.html")
+    books = Product.objects.filter(category="Books").exclude(image__exact='').order_by('?')[:4]
+    electronics = Product.objects.filter(category="Electronics").exclude(image__exact='').order_by('?')[:4]
+    supplies = Product.objects.filter(category="Supplies").exclude(image__exact='').order_by('?')[:4]
+    clothes = Product.objects.filter(category="Clothes").exclude(image__exact='').order_by('?')[:4]
+    categories = {
+        'Books': books,
+        'Electronics': electronics,
+        'Supplies': supplies,
+        'Clothes': clothes,
+    }
+    return render(request, "index.html", {'categories': categories})
 
 def helloWorld(request):
     return HttpResponse('Hello World')
@@ -38,6 +48,14 @@ def products(request):
     products = Product.objects.all()
     context={
       'my_data':products
+    }
+    return render(request, 'products.html', context)
+
+def products_by_category(request, category_name):
+    products = Product.objects.filter(category__icontains=category_name)
+    context = {
+        'my_data': products,
+        'category_name': category_name
     }
     return render(request, 'products.html', context)
 
