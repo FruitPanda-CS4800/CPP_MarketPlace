@@ -1,0 +1,70 @@
+{% load static tailwind_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% tailwind_css %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <footer>
+    <style>
+        footer {
+          text-align: center;
+          padding: 2px;
+          color: white;
+          position: absolute;
+          right: 0;bottom:0;left:0;
+          background-color: black;
+          display: inline-block;
+          bottom: 0;
+        }
+        #container
+        {
+            padding: 10px;
+            height: 150px;
+            right: 0;bottom:0;left:0;
+            margin-left:200px;
+            display: inline-block;
+        }
+        #content
+        {
+          display: inline-block;
+        }
+        #acc
+        {
+          margin-left:250px;
+          margin-right:250px;
+        }
+        #shop
+        {
+          margin-right:50px;
+        }
+        </style>
+    <nav class="class=flex items-center justify-center w-screen bg-green-800 flow-root">
+      <div class="flex items-center grow flow-root" id="container">
+        <div class = "flex items-center w-600">
+            <div class="lg-4 mr-10 ">
+              © Cal Poly Pomona 2023
+            </div>
+            <div class="lg-4 mr-10" id="acc">
+              <a href="/account/{{ request.user.id}}">
+                Account
+              </a>
+            </div>
+            <div class="lg-4" id="shop">
+              <a href="/search/?query="><h3>Shop</h3></a>
+                <ul>
+                  <li><a href="#">Books</a></li>
+                  <li><a href="#">Electronics</a></li>
+                  <li><a href="#">Supplies</a></li>
+                  <li><a href="#">Other</a></li>
+                </ul>
+            </div>
+        </div>
+      </div>
+    </nav>
+</footer>
+
+</html>

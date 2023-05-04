@@ -16,6 +16,7 @@ urlpatterns = [
     path('product/<int:product_id>/', views.product_detail, name='product_detail'),
     path('account_settings/', views.account_settings, name='account_settings'),
     path('account/<int:account_id>/', views.account_detail, name='account'),
+    path('chat/', views.chat_page,name='test'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
