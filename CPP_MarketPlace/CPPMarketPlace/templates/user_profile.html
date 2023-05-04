@@ -19,9 +19,17 @@
   </div>
 </div>
 <div class="flex justify-center my-10">
-  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-    Chat
-  </button>
+  {% if request.user.id == user_profile.user.id %}
+  <a href="{% url 'create_product' %}">
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      Create Product
+    </button>
+  </a>
+  {% else %}
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      Chat
+    </button>
+  {% endif %}
 </div>
 
 <hr class="my-8 mx-10 border-gray-400">

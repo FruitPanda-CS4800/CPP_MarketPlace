@@ -44,20 +44,33 @@
       <div class="flex items-center grow flow-root" id="container">
         <div class = "flex items-center w-600">
             <div class="lg:w-48 mx-10 ">
-              © Cal Poly Pomona 2023
+              © CPPMarketPlace 2023
             </div>
             <div class="lg:w-48 mx-10" id="acc">
-              <a href="/account/{{ request.user.id}}">
-                Account
-              </a>
+              <ul>
+                {% if user.is_authenticated%}
+                  <li><a href="/account/{{ request.user.id}}">
+                  Account
+                  </a>
+                {% else %}
+                  <li><a href="/login">
+                  Account
+                  </a>
+                {% endif %}
+                <li><a href="/chat">
+                  Messages
+                </a>
+                <li><a href="/create_product">
+                  Create Product
+                </a>
+            </ul>
             </div>
             <div class="lg:w-48 mx-10" id="shop">
-              <a href="/search/?query="><h3>Shop</h3></a>
+              <a href="/products"><h3>Shop</h3></a>
                 <ul>
-                  <li><a href="#">Books</a></li>
-                  <li><a href="#">Electronics</a></li>
-                  <li><a href="#">Supplies</a></li>
-                  <li><a href="#">Other</a></li>
+                  <li><a href="/products/Books">Books</a></li>
+                  <li><a href="/products/Electronics">Electronics</a></li>
+                  <li><a href="/products/Supplies">Supplies</a></li>
                 </ul>
             </div>
         </div>

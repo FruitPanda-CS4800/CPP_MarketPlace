@@ -35,11 +35,19 @@
             </a>
           </div>
           <div class="ml-4 mr-10 ">
-            <a href="/account_settings" id="logo-link">
+            {% if user.is_authenticated %}
+              <a href="/account_settings" id="logo-link">
+            {% else %}
+              <a href="/login" id="logo-link">
+            {% endif %}    
             <img src="{% static "images/account.png" %}" class="object-contain h-12 w-15" alt="account" /></a>
           </div>
           <div class="ml-4 mr-10">
-            <a href="/chat" id="logo-link">
+            {% if user.is_authenticated %}
+              <a href="/chat" id="logo-link">
+            {% else %}
+              <a href="/login" id="logo-link">
+            {% endif %}    
             <img src="{% static "images/messages.png" %}" class="object-contain h-20 w-8" alt="messages" /></a>
           </div>
           <div class="ml-4 mr-10">
@@ -47,7 +55,7 @@
               {% if user.is_authenticated %}
                 <a href="{% url 'logout' %}"> Logout </a>
               {% else %}
-              <a href="{% url 'register' %}"> Login </a>
+                <a href="{% url 'login' %}"> Login </a>
               {% endif %}
             </span>
           </div>
