@@ -770,6 +770,10 @@ select {
   position: static;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
 }
@@ -838,19 +842,19 @@ select {
   margin-bottom: 2rem;
 }
 
-.mx-20 {
-  margin-left: 5rem;
-  margin-right: 5rem;
+.my-12 {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
-.mx-4 {
-  margin-left: 1rem;
-  margin-right: 1rem;
+.mx-12 {
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
 
-.mx-40 {
-  margin-left: 10rem;
-  margin-right: 10rem;
+.my-16 {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 
 .mb-2 {
@@ -889,20 +893,48 @@ select {
   margin-top: 2rem;
 }
 
-.ml-10 {
-  margin-left: 2.5rem;
+.mb-12 {
+  margin-bottom: 3rem;
 }
 
-.ml-40 {
-  margin-left: 10rem;
+.mb-10 {
+  margin-bottom: 2.5rem;
 }
 
-.ml-12 {
-  margin-left: 3rem;
+.mb-16 {
+  margin-bottom: 4rem;
 }
 
-.ml-8 {
-  margin-left: 2rem;
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-14 {
+  margin-bottom: 3.5rem;
+}
+
+.mb-24 {
+  margin-bottom: 6rem;
+}
+
+.mb-32 {
+  margin-bottom: 8rem;
+}
+
+.mb-40 {
+  margin-bottom: 10rem;
+}
+
+.mb-48 {
+  margin-bottom: 12rem;
 }
 
 .block {
@@ -989,13 +1021,13 @@ select {
   width: 100%;
 }
 
-.w-screen {
-  width: 100vw;
-}
-
 .w-max {
   width: -moz-max-content;
   width: max-content;
+}
+
+.w-screen {
+  width: 100vw;
 }
 
 .max-w-6xl {
@@ -1162,28 +1194,39 @@ select {
   padding-bottom: 2rem;
 }
 
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 .pr-10 {
   padding-right: 2.5rem;
 }
 
-.pl-4 {
-  padding-left: 1rem;
+.pb-16 {
+  padding-bottom: 4rem;
 }
 
-.pl-10 {
-  padding-left: 2.5rem;
+.pb-10 {
+  padding-bottom: 2.5rem;
 }
 
-.pl-40 {
-  padding-left: 10rem;
+.pb-8 {
+  padding-bottom: 2rem;
 }
 
-.pl-20 {
-  padding-left: 5rem;
-}
-
-.pl-5 {
-  padding-left: 1.25rem;
+.pb-12 {
+  padding-bottom: 3rem;
 }
 
 .text-left {
@@ -1288,10 +1331,6 @@ select {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.filter {
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
 .line-clamp-1 {
   overflow: hidden;
   display: -webkit-box;
@@ -1337,6 +1376,10 @@ select {
 }
 
 @media (min-width: 1024px) {
+  .lg\:w-48 {
+    width: 12rem;
+  }
+
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;

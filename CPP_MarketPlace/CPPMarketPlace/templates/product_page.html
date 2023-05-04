@@ -58,14 +58,16 @@
       </div>
       <!-- Product Description -->
       <hr class="my-10 border-gray-400">
-      <div class="w-full px-10">
+      <div class="w-full px-10 mb-12">
         <div class="flex items-center">
           <h2 class="text-gray-700 text-xl font-bold mr-4">Description</h2>
         </div>
-        <p class="text-gray-700 text-xl my-4">{{ product.description }}</p>
+        <p class="text-gray-700 text-xl mt-4 mb-48">{{ product.description }}</p>
       </div>
     </div>
-    
+    <footer>
+      {% include 'footer.html' %}  
+    </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
@@ -83,6 +85,3 @@
       }
       </script>
   </body>
-  <footer>
-    {% include 'footer.html' %}  
-  </footer>

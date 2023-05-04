@@ -29,7 +29,7 @@
     <h2 class="text-gray-700 text-xl font-bold mr-4 px-10 mb-4">Products</h2>
 </div>
 <div class="max-w-6xl mx-auto px-4">
-    <div class="grid-container">
+    <div class="grid-container mb-12">
       {% if results %}
         {% for result in results %}
           <div class="grid-item">
@@ -53,3 +53,5 @@
       {% endif %}
     </div>
 </div>
+
+{% include 'footer.html' %}
